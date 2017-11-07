@@ -101,6 +101,8 @@ body {
 				
 				player.body.velocity.x = 0;
 				if (cursors.left.isDown) {
+					this.stomp = this.add.audio('stompsound');
+				        this.stomp.play();
 					player.body.velocity.x = -90;
 					player.animations.play('walkLeft');
 					player.goesRight = false;
@@ -110,8 +112,7 @@ body {
 					player.goesRight = true;
 				} else {
 					player.animations.stop();
-					this.stomp = this.add.audio('stompsound');
-				        this.stomp.play();
+					
 					if (player.goesRight)
 						player.frame = 0;
 					else
