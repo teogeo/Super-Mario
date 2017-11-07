@@ -22,6 +22,7 @@ body {
 
 		function preload() {
 			this.load.audio('jumpsound','audio/jump.wav');
+			this.load.audio('bgmsound','audio/bgm.mp3');
 			//  We need this because the assets are on github pages
 			//  Remove the next 2 lines if running locally
 			this.load.baseURL = 'https://teogeo.github.io/Super-Mario/';
@@ -38,6 +39,10 @@ body {
 		}
 
 		function create() {
+			this.bgm = this.add.audio('bgmsound');
+			this.bgm.play('',0,1,true);
+			
+			
 			Phaser.Canvas.setImageRenderingCrisp(game.canvas)
 			game.scale.pageAlignHorizontally = true;
 			game.scale.pageAlignVertically = true
