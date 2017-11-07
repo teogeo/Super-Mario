@@ -139,8 +139,7 @@ body {
 		function goombaOverlap(player, goomba) {
 			
 			if (player.body.touching.down) {
-				this.door = this.add.audio('doorsound');
-			        this.door.play();
+				
 				goomba.animations.stop();
 				goomba.frame = 2;
 				goomba.body.enable = false;
