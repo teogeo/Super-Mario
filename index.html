@@ -23,6 +23,7 @@ body {
 		function preload() {
 			this.load.audio('jumpsound','audio/jump.wav');
 			this.load.audio('bgmsound','audio/bgm.mp3');
+			this.load.audio('doorsound','audio/door.wav');
 			//  We need this because the assets are on github pages
 			//  Remove the next 2 lines if running locally
 			this.load.baseURL = 'https://teogeo.github.io/Super-Mario/';
@@ -136,6 +137,8 @@ body {
 		}
 
 		function goombaOverlap(player, goomba) {
+			this.door = this.add.audio('doorsound');
+			this.door.play();
 			if (player.body.touching.down) {
 				goomba.animations.stop();
 				goomba.frame = 2;
