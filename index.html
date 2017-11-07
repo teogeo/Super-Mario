@@ -111,8 +111,8 @@ body {
 				}
 
 				if (cursors.up.isDown && player.body.onFloor()) {
-					var jump = game.add.audio('jump');
-					jump.play();
+					game.sound.set([jump],start,this);
+					
 					
 					
 					player.body.velocity.y = -190;
