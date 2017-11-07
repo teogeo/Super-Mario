@@ -21,6 +21,7 @@ body {
 		}, false, false);
 
 		function preload() {
+			this.load.audio('jumpsound','audio/jump.wav');
 			//  We need this because the assets are on github pages
 			//  Remove the next 2 lines if running locally
 			this.load.baseURL = 'https://teogeo.github.io/Super-Mario/';
@@ -109,6 +110,8 @@ body {
 				}
 
 				if (cursors.up.isDown && player.body.onFloor()) {
+				       this.jump = this.add.audio('jumpsound');
+					this.jump.play();
 					
 					player.body.velocity.y = -190;
 					player.animations.stop();
