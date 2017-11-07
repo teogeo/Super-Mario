@@ -22,7 +22,6 @@ body {
 
 		function preload() {
 			
-			this.load.audio('jump','audio/jump.wav');
 			
 			//  We need this because the assets are on github pages
 			//  Remove the next 2 lines if running locally
@@ -112,8 +111,7 @@ body {
 				}
 
 				if (cursors.up.isDown && player.body.onFloor()) {
-					var snd = Super-Mario.add.audio("jump");
-					snd.play();
+					
 					
 	
 				        player.body.velocity.y = -190;
