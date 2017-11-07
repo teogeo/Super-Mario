@@ -107,6 +107,8 @@ body {
 					player.animations.play('walkLeft');
 					player.goesRight = false;
 				} else if (cursors.right.isDown) {
+					this.stomp = this.add.audio('stompsound');
+				        this.stomp.play();
 					player.body.velocity.x = 90;
 					player.animations.play('walkRight');
 					player.goesRight = true;
