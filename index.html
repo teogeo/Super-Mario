@@ -138,9 +138,9 @@ body {
 		}
 
 		function coinOverlap(player, coin) {
-			coin.kill();
 			this.coin = this.add.audio('coinsound');
 			this.coin.play();
+			coin.kill();
 		}
 
 		function goombaOverlap(player, goomba) {
