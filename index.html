@@ -21,6 +21,11 @@ body {
 		}, false, false);
 
 		function preload() {
+			
+			this.load.audio('menusong','audio/SDREMario.mp3');
+			this.load.audio('coinsound','audio/coin.wav');
+			this.load.audio('jumpsound','audio/mariojump.mp3');
+			this.load.audio('stompsound','audio/stomp.wav');
 
 			//  We need this because the assets are on github pages
 			//  Remove the next 2 lines if running locally
@@ -110,6 +115,9 @@ body {
 				}
 
 				if (cursors.up.isDown && player.body.onFloor()) {
+					var snd = game.add.audio("jumpsound");
+					snd.play();
+		
 					player.body.velocity.y = -190;
 					player.animations.stop();
 				}
