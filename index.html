@@ -92,7 +92,9 @@ body {
 
 			cursors = game.input.keyboard.createCursorKeys();
 		}
-
+		var coint;
+		
+           
 		function update() {
 			game.physics.arcade.collide(player, layer);
 			game.physics.arcade.collide(goombas, layer);
@@ -139,7 +141,7 @@ body {
 		}
 
 		function coinOverlap(player, coin) {
-			var coint = game.add.audio('coinsound');
+			coint = game.add.audio('coinsound');
 			coint.play();
 			coin.kill();
 		}
