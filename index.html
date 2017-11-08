@@ -23,7 +23,7 @@ body {
 		var score = 0;
 		var scoreText;
 		
-		var lives=3;
+		
 		var lcounter;
 		
 		
@@ -163,6 +163,9 @@ body {
 			coint.play();
 			coin.kill();
 			
+			score +=10;
+			scoreText.text = 'Score: ' + score;
+			
 			
 		}
 
@@ -178,6 +181,9 @@ body {
 				goomba.frame = 2;
 				goomba.body.enable = false;
 				player.body.velocity.y = -80;
+				
+				score += 100;
+				scoreText.text = 'Score: ' + score;
 				
 				game.time.events.add(Phaser.Timer.SECOND, function() {
 					goomba.kill();
