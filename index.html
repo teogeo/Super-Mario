@@ -93,6 +93,7 @@ body {
 			cursors = game.input.keyboard.createCursorKeys();
 		}
 		var coint;
+		var stompt;
 		
            
 		function update() {
@@ -149,6 +150,8 @@ body {
 		function goombaOverlap(player, goomba) {
 			
 			if (player.body.touching.down) {
+				stompt = game.add.audio('stompsound');
+				stompt.play();
 				
 				goomba.animations.stop();
 				goomba.frame = 2;
