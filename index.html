@@ -148,10 +148,11 @@ body {
 		}
 
 		function goombaOverlap(player, goomba) {
-			stompt = game.add.audio('stompsound');
-			stompt.play();
+			
 			
 			if (player.body.touching.down) {
+				stompt = game.add.audio('stompsound');
+			        stompt.play();
 				
 				goomba.animations.stop();
 				goomba.frame = 2;
