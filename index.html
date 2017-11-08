@@ -42,6 +42,11 @@ body {
 			this.load.tilemap('level', 'assets/super_mario_map.json', null,
 					Phaser.Tilemap.TILED_JSON);
 		}
+		
+		var score=0;
+		var scoretest;
+		var lives=3;
+		var livestest;
 
 		function create() {
 			this.bgm = this.add.audio('bgmsound');
@@ -55,6 +60,12 @@ body {
 			game.physics.startSystem(Phaser.Physics.ARCADE);
 
 			game.stage.backgroundColor = '#5c94fc';
+			
+			scoretest = game.add.text(20,20,'Score: 0', { fontSize: '20px', fill: '#A04242'});
+			livestest = game.add.text(400,20,'Lives: '+lives, {fontSize: '20px', fill: 'A04242'}
+			livetest.fixedToCamera = true;
+			scoretest.fixedToCamera = true;			  
+			
 
 			map = game.add.tilemap('level');
 			map.addTilesetImage('tiles', 'tiles');
@@ -145,6 +156,8 @@ body {
 		}
 
 		function coinOverlap(player, coin) {
+			score += 5;
+			scoretest.text= 'Score: '+score;
 			coint = game.add.audio('coinsound');
 			coint.play();
 			coin.kill();
@@ -158,6 +171,8 @@ body {
 			if (player.body.touching.down) {
 				stompt = game.add.audio('stompsound');
 			        stompt.play();
+				score += 7;
+				scoretest.text = 'Score: '+score;
 				
 				goomba.animations.stop();
 				goomba.frame = 2;
