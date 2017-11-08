@@ -26,7 +26,7 @@ body {
 		var counter;
 		
 		
-		var lcounter;
+		
 		
 		
 
@@ -51,11 +51,12 @@ body {
 					Phaser.Tilemap.TILED_JSON);
 		}
 		
+		var music;
 		
 
 		function create() {
-			this.bgm = this.add.audio('bgmsound');
-			this.bgm.play('',0,1,true);
+			music = game.add.audio('bgmsound');
+			music.play();
 			
 			
 			Phaser.Canvas.setImageRenderingCrisp(game.canvas)
@@ -193,7 +194,11 @@ body {
 				game.time.events.add(Phaser.Timer.SECOND, function() {
 					goomba.kill();
 				});
-			} else {
+			} else
+				
+			
+			{
+				music.stop();
 				if(lives>1){
 					setTimeout(function(){
 						score=0;
