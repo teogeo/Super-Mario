@@ -22,6 +22,8 @@ body {
 		
 		var score = 0;
 		var scoreText;
+		var lives=3;
+		var counter;
 		
 		
 		var lcounter;
@@ -100,9 +102,12 @@ body {
 			player.animations.add('walkRight', [ 1, 2, 3 ], 10, true);
 			player.animations.add('walkLeft', [ 8, 9, 10 ], 10, true);
 			player.goesRight = true;
-			
+			//score
 			scoreText = game.add.text(16,16, 'Score: 0', {fontSize: '10px', fill: '#000'}); 
 			scoreText.fixedToCamera = true;
+			//lives
+			counter=game.add.text(158,20,'X'+lives,{font:'30px',fontSize:'10px', fill:'white'});
+			counter.fixedToCamera=true;
 
 			game.camera.follow(player);
 
@@ -189,6 +194,12 @@ body {
 					goomba.kill();
 				});
 			} else {
+				if(lives>1){
+					setTimeout(function(){
+						score=0;
+						lives-=1;
+				game.state.start(game.state.current);
+					},2500);
 				player.frame = 6;
 				player.body.enable = false;
 				player.animations.stop();
