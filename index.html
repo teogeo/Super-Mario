@@ -194,9 +194,15 @@ body {
 					setTimeout(function(){
 						score=0;
 						lives-=1;
-				game.time.events.add(Phaser.Timer.SECOND * 3, function() {
-					game.paused = true;
-				});
+						
+				game.state.start(game.state.current);
+					},3500;
+						   }else{
+				setTimeout(function(){
+				alert("You lose,try again");
+				location.reload();
+					},3500);}
+						
 			}
 		}
 	</script>
