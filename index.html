@@ -20,6 +20,12 @@ body {
 			update : update
 		}, false, false);
 		
+		var score = 0;
+		var scoreText;
+		
+		var lives=3;
+		var lcounter;
+		
 		
 
 		function preload() {
@@ -95,6 +101,8 @@ body {
 			player.animations.add('walkLeft', [ 8, 9, 10 ], 10, true);
 			player.goesRight = true;
 			
+			scoreText = game.add.text(16,16, 'Score: 0', {fontSize: '10px', fill: '#000'}); 
+			scoreText.fixedToCamera = true;
 
 			game.camera.follow(player);
 
