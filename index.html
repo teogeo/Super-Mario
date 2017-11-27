@@ -51,7 +51,7 @@
 				this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
 				this.load.spritesheet('mario', 'assets/mario.png', 16, 16);
 				this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
-				this.load.image('live','assets/marioimage.png');
+				//this.load.image('live','assets/marioimage.png');
 				
 	
 				this.load.tilemap('level', 'assets/super_mario_map.json', null,
@@ -114,8 +114,8 @@
 				scoreText = game.add.text(16,16, 'Score: 0', {fontSize: '10px', fill: '#000'}); 
 				scoreText.fixedToCamera = true;
 				//lives
-				mimage=game.add.sprite(140,15,'live');
-				mimage.fixedToCamera=true;
+				//mimage=game.add.sprite(140,15,'live');
+				//mimage.fixedToCamera=true;
 				
 				counter=game.add.text(158,20,'X'+lives,{font:'30px',fontSize:'10px', fill:'black'});
 				counter.fixedToCamera=true;
