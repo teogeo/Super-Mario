@@ -17,7 +17,7 @@ preload: function() {
 			
 			var menuPic = game.add.sprite(8, 8, 'Menu');
 
-			var StageText = game.add.text(38, 150, 'Level1', {fontSize: '12px', fill: '#000'});
+			var StageText = game.add.text(38, 150, {fontSize: '12px', fill: '#000'});
 			var click1 = game.add.button(60, 197, 'Level1', function() {
 			game.state.start('Level1');
 			house.stop();
