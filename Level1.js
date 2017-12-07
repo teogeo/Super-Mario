@@ -9,11 +9,13 @@ var Level1 = {
 						Phaser.Tilemap.TILED_JSON);
             
             
-                  this.load.audio('jumpsound','audio/jump.wav');
-			            this.load.audio('housesound','audio/house.mp3');
-				          this.load.audio('coinsound','audio/coin.wav');
-				          this.load.audio('stompsound','audio/stomp.wav');
-				          this.load.audio('deathsound','audio/death.mp3'); 
+                  this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16,
+						16);
+				this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
+				this.load.spritesheet('angry','assets/angrya.png',16,16);
+				this.load.spritesheet('mario', 'assets/mario.png', 16, 16);
+				this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
+				this.load.image('live','assets/marioimage.png');
                   },
                   
                   
