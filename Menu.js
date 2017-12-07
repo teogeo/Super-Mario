@@ -18,7 +18,7 @@ preload: function() {
 			var menuPic = game.add.sprite(8, 8, 'Menu');
 
 			
-			var click1 = game.add.button(60, 197, 'Level1', function() {
+			var click1 = game.add.button(60, 215, 'Level1', function() {
 			game.state.start('Level1');
 			house.stop();
 		});
