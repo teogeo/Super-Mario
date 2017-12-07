@@ -10,13 +10,11 @@
 		background-color: #000;
 	}
 	</style>
-	<script src="super.js"></script>
-        <script src="mario.js"></script>
 	<script src="//cdn.jsdelivr.net/phaser/2.6.2/phaser.min.js"></script>
 	</head>
 	<body>
 		<script type="text/javascript">
-			var game = new Phaser.Game(256, 240, Phaser.CANVAS, '', {
+			var game = new Phaser.Game(380, 240, Phaser.CANVAS, '', {
 				preload : preload,
 				create : create,
 				update : update
@@ -38,19 +36,20 @@
 	
 			function preload() {
 				this.load.audio('jumpsound','audio/jump.wav');
-				this.load.audio('bgmsound','audio/bgm.mp3');
+				this.load.audio('housesound','audio/house.mp3');
 				this.load.audio('coinsound','audio/coin.wav');
 				this.load.audio('stompsound','audio/stomp.wav');
 				this.load.audio('deathsound','audio/death.mp3');
 				
 				//  We need this because the assets are on github pages
 				//  Remove the next 2 lines if running locally
-				this.load.baseURL = 'https://teogeo.github.io/Super-Mario/';
-				this.load.crossOrigin = 'anonymous';
+				//this.load.baseURL = 'https://teogeo.github.io/Super-Mario/';
+				//this.load.crossOrigin = 'anonymous';
 	
 				this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16,
 						16);
 				this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
+				this.load.spritesheet('angry','assets/angrya.png',16,16);
 				this.load.spritesheet('mario', 'assets/mario.png', 16, 16);
 				this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
 				this.load.image('live','assets/marioimage.png');
@@ -64,7 +63,7 @@
 			
 	
 			function create() {
-				music = game.add.audio('bgmsound');
+				music = game.add.audio('housesound');
 				music.play();
 				
 				
@@ -81,10 +80,13 @@
 	
 				map = game.add.tilemap('level');
 				map.addTilesetImage('tiles', 'tiles');
+				map.setCollisionBetween(3, 12, true, 'pipe');
 				map.setCollisionBetween(3, 12, true, 'solid');
 	
 				map.createLayer('background');
-	
+				pipe = map.createLayer('pipe');
+			    pipe.resizeWorld();
+				
 				layer = map.createLayer('solid');
 				layer.resizeWorld();
 	
@@ -104,6 +106,17 @@
 				goombas.setAll('body.bounce.x', 1);
 				goombas.setAll('body.velocity.x', -20);
 				goombas.setAll('body.gravity.y', 500);
+ 
+                 
+                 // othe enemy 
+                angry= game.add.group();
+				angry.enableBody = true;
+				map.createFromTiles(1, null, 'angry', 'enemy', angry);
+				angry.callAll('animations.add', 'animations', 'walk',[ 0, 1 ] ,2, true);
+				angry.callAll('animations.play', 'animations', 'walk');
+				angry.setAll('body.bounce.x', 1);
+				angry.setAll('body.velocity.x', 70);
+				angry.setAll('body.gravity.y', 500);
 	
 				player = game.add.sprite(16, game.world.height - 48, 'mario');
 				game.physics.arcade.enable(player);
@@ -131,11 +144,14 @@
 			
 	           
 			function update() {
+				game.physics.arcade.collide(player,pipe,pipeOverlap);
 				game.physics.arcade.collide(player, layer);
 				game.physics.arcade.collide(goombas, layer);
 				game.physics.arcade.overlap(player, goombas, goombaOverlap);
 				game.physics.arcade.overlap(player, coins, coinOverlap);
-	
+				game.physics.arcade.collide(angry, layer);
+				game.physics.arcade.overlap(player, angry,angryOverlap);
+				
 				if (player.body.enable) {
 					
 					player.body.velocity.x = 0;
@@ -174,6 +190,18 @@
 					}
 				}
 			}
+
+			function pipeOverlap(player,pipe){
+	if (cursors.down.isDown && (player.body.onFloor())) {
+		
+		player.body.enable=false;
+		game.time.events.add(Phaser.Timer.SECOND*0.1 , function() {
+					player.body.enable=true;
+					player.reset(1415,150);
+					});
+	}
+}
+
 	
 			function coinOverlap(player, coin) {
 				
@@ -186,7 +214,8 @@
 				
 				
 			}
-	
+
+			
 			function goombaOverlap(player, goomba) {
 				
 				
@@ -236,7 +265,57 @@
 							
 				}
 			}
+
+
+			function angryOverlap(player, angry) {
+				
+				
+				if (player.body.touching.down) {
+					stompt = game.add.audio('stompsound');
+				        stompt.play();
+					
+					
+					angry.animations.stop();
+					angry.frame = 2;
+					angry.body.enable = false;
+					player.body.velocity.y = -80;
+					
+					score += 100;
+					scoreText.text = 'Score: ' + score;
+					
+					game.time.events.add(Phaser.Timer.SECOND, function() {
+						angry.kill();
+					});
+				} else
+					
+				
+				{
+					music.stop();
+					death = game.add.audio('deathsound');
+					death.play();
+					
+					if(lives>1){
+						setTimeout(function(){
+							score=0;
+							lives-=1;
+					game.state.start(game.state.current);
+						},2500);
+					}else{
+						setTimeout(function(){
+							alert("Game Over");
+							location.reload();
+						},1000);}
+					player.frame = 6;
+					player.body.enable = false;
+					player.animations.stop();
+					game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+						game.paused = true;
+					});
+					
+					
+							
+				}
+			}
 		</script>
 	</body>
 	</html>
-
