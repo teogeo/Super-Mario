@@ -15,7 +15,7 @@ var Level1 = {
 				this.load.spritesheet('angry','assets/angrya.png',16,16);
 				this.load.spritesheet('mario', 'assets/mario.png', 16, 16);
 				this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
-				this.load.spritesheet('door1', 'assets/door1.png', 16, 16);
+				this.load.spritesheet('door', 'assets/door.png', 16, 16);
 				this.load.image('live','assets/marioimage.png');
 				this.load.image('door', 'assets/door.png',16,16);
                   },
