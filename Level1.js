@@ -15,7 +15,9 @@ var Level1 = {
 				this.load.spritesheet('angry','assets/angrya.png',16,16);
 				this.load.spritesheet('mario', 'assets/mario.png', 16, 16);
 				this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
+				this.load.spritesheet('door1', 'assets/door1.png', 16, 16);
 				this.load.image('live','assets/marioimage.png');
+				this.load.image('door', 'assets/door.png',16,16);
                   },
                   
                   
@@ -64,6 +66,10 @@ var Level1 = {
 				goombas.setAll('body.bounce.x', 1);
 				goombas.setAll('body.velocity.x', -20);
 				goombas.setAll('body.gravity.y', 500);
+
+	 			door = game.add.group();
+		        door.enableBody = true;
+		        map.createFromTiles(3, null, 'door', 'stuff', door);
  
                  
                  // othe enemy 
@@ -99,6 +105,7 @@ var Level1 = {
         },
         
         update: function() {
+        	game.physics.arcade.collide(player,door, doorcollide);
         game.physics.arcade.collide(player,pipe,pipeOverlap);
 				game.physics.arcade.collide(player, layer);
 				game.physics.arcade.collide(goombas, layer);
