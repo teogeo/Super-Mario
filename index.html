@@ -52,6 +52,26 @@
 		         game.state.add('Menu', Menu);
 		         game.state.start('Menu');
 		
+
+		function nextlvl(){
+			lvl = game.add.audio('lvl');
+			badmushflag = false;
+			mushflag = false;
+			
+			var style5 = { font: "bold 80px Roman", fill: "#4bb84b", boundsAlignH: "center", boundsAlignV: "middle" };
+			lvltext = game.add.text(280, 150, "NEXT STAGE", style5);
+			lvltext.fixedToCamera = true;
+			theme.stop();
+			lvl.play();
+			player.body.enable = false;
+			player.animations.stop();
+			game.time.events.add(Phaser.Timer.SECOND * 5, function() {
+			game.state.start('S2');
+			});
+		}
+
+		
+
 			
 	
 			/*function create() {
@@ -193,6 +213,21 @@
 					});
 	}
 }
+
+function doorcollide(player, door){
+			if (player.body.touching.up){
+				door.body.enable = false;
+				nextlvl();
+			}else if (player.body.touching.right){
+				door.body.enable = false;
+				nextlvl();
+			}else if (player.body.touching.left){
+				door.body.enable = false;
+				nextlvl();
+			}else
+				door.body.enable = false;
+				nextlvl();
+		}
 
 	
 			function coinOverlap(player, coin) {
