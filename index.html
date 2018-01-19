@@ -67,7 +67,7 @@
 			text1.fixedToCamera = true;
 			//theme.stop();
 			//lvl.play();
-			//housesound.stop();
+			music.stop();
 			player.body.enable = false;
 			player.animations.stop();
 			game.time.events.add(Phaser.Timer.SECOND * 4, function() {
@@ -84,6 +84,7 @@
 			text2 = game.add.text(40, 180, "CONGRATULATIONS", style);
 			
 			text2.fixedToCamera=true; 
+			music.stop();	
 			//text.fixedToCamera=true;
 			//ends.play();
 			player.body.enable = false;
