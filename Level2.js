@@ -104,7 +104,7 @@ var Level2 = {
         },
         
         update: function() {
-        	game.physics.arcade.collide(player,door1, door1collide);
+        	//game.physics.arcade.collide(player,door1, door1collide);
         game.physics.arcade.collide(player,pipe,pipeOverlap);
 				game.physics.arcade.collide(player, layer);
 				game.physics.arcade.collide(goombas, layer);
