@@ -56,7 +56,7 @@
 		
 
 		function nextlvl(){
-			//lvl = game.add.audio('lvl');
+			lvl = game.add.audio('housesound');
 			//badmushflag = false;
 			//mushflag = false;
 			
@@ -65,7 +65,7 @@
 			//lvltext.fixedToCamera = true;
 			//theme.stop();
 			//lvl.play();
-			housesound.stop();
+			//housesound.stop();
 			player.body.enable = false;
 			player.animations.stop();
 			game.time.events.add(Phaser.Timer.SECOND * 5, function() {
