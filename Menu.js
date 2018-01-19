@@ -25,7 +25,7 @@ preload: function() {
 		});
 		click1.anchor.set(0.5, 0.5);
 
-		var click2 = game.add.button(180,215,'Level2',function(){
+		var click2 = game.add.button(140,215,'Level2',function(){
 			game.state.start('Level2');
 			house.stop();
 		});
