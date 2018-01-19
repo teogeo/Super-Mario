@@ -9,7 +9,7 @@ var Level2 = {
 						Phaser.Tilemap.TILED_JSON);
             
             
-                  this.load.spritesheet('super_mario_tiles2', 'assets/super_mario_tiles2.png', 16,
+                  this.load.spritesheet('tiles', 'assets/super_mario_tiles2.png', 16,
 						16);
 				this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
 				this.load.spritesheet('angry','assets/angrya.png',16,16);
