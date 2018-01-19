@@ -2,6 +2,7 @@ var Menu = {
 preload: function() {
     game.load.image('Menu', 'assets/menu.png');
 		game.load.image('Level1', 'assets/level1.png');
+		game.load.image('Level2','assets/level2.png');
 		game.load.audio('house', 'audio/house.mp3');
 		},
     
@@ -23,5 +24,12 @@ preload: function() {
 			house.stop();
 		});
 		click1.anchor.set(0.5, 0.5);
+
+		var click2 = game.add.button(120,215,'Level2',function(){
+			game.state.start('Level2');
+			house.stop();
+		});
+
+		click2.anchor.set(0.5, 0.5);
 	}
 }
