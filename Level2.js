@@ -9,14 +9,14 @@ var Level2 = {
 						Phaser.Tilemap.TILED_JSON);
             
             
-                  this.load.spritesheet('tiles', 'assets/super_mario_tiles2.png', 16,
+                  this.load.spritesheet('tiles', 'assets/super_mario_tiles.png', 16,
 						16);
 				this.load.spritesheet('goomba', 'assets/goomba.png', 16, 16);
 				this.load.spritesheet('angry','assets/angrya.png',16,16);
 				this.load.spritesheet('mario', 'assets/mario.png', 16, 16);
 				this.load.spritesheet('coin', 'assets/coin.png', 16, 16);
 				this.load.image('live','assets/marioimage.png');
-				this.load.image('door1', 'assets/door1.png',16,16);
+				//this.load.image('door1', 'assets/door1.png',16,16);
                   },
                   
                   
