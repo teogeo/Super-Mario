@@ -68,7 +68,7 @@ var Level2 = {
 
 	 			door1 = game.add.group();
 		        door1.enableBody = true;
-		        map.createFromTiles(3, null, 'door1', 'stuff', door1);
+		        map.createFromTiles(4, null, 'door1', 'stuff', door1);
  
                  
                  // othe enemy 
