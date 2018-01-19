@@ -48,6 +48,7 @@
 			var music;
 			var death;
 			var mimage;
+			var text1;
 			
 			 game.state.add('Level1', Level1);
 			 game.state.add('Level2', Level2);
@@ -60,9 +61,9 @@
 			//badmushflag = false;
 			//mushflag = false;
 			
-			//var style5 = { font: "bold 80px Roman", fill: "#4bb84b", boundsAlignH: "center", boundsAlignV: "middle" };
-			//lvltext = game.add.text(280, 150, "NEXT STAGE", style5);
-			//lvltext.fixedToCamera = true;
+			var style5 = { font: "bold 80px Roman", fill: "#4bb84b", boundsAlignH: "center", boundsAlignV: "middle" };
+			text1 = game.add.text(280, 150, "NEXT STAGE", style5);
+			text1.fixedToCamera = true;
 			//theme.stop();
 			//lvl.play();
 			//housesound.stop();
