@@ -1,8 +1,8 @@
 var Menu = {
 preload: function() {
     game.load.image('Menu', 'assets/menu.png');
-		game.load.image('Level1', 'assets/level1.png');
-		game.load.image('Level2','assets/level2.png');
+		game.load.image('Level1', 'assets/level1.jpg');
+		game.load.image('Level2','assets/level2.jpg');
 		game.load.audio('house', 'audio/house.mp3');
 		},
     
