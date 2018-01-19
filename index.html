@@ -49,6 +49,7 @@
 			var death;
 			var mimage;
 			var text1;
+			var text2;
 			
 			 game.state.add('Level1', Level1);
 			 game.state.add('Level2', Level2);
@@ -61,7 +62,7 @@
 			//badmushflag = false;
 			//mushflag = false;
 			
-			var style5 = { font: "bold 30px Roman", fill: "#000000", boundsAlignH: "center", boundsAlignV: "middle" };
+			var style = { font: "bold 30px Arial", fill: "#000000", boundsAlignH: "center", boundsAlignV: "middle" };
 			text1 = game.add.text(160, 120, "NEXT STAGE", style5);
 			text1.fixedToCamera = true;
 			//theme.stop();
@@ -72,6 +73,27 @@
 			game.time.events.add(Phaser.Timer.SECOND * 5, function() {
 			game.state.start('Level2');
 			});
+		}
+			
+			
+			function endgame(){
+			//theme.stop();
+			ends = game.add.audio('housesound');
+			var style = { font: "bold 30px Arial", fill: "#000000", boundsAlignH: "center", boundsAlignV: "middle" };
+			
+			text2 = game.add.text(160, 120, "CONGRATULATIONS", style5);
+			
+			text2.fixedToCamera=true; 
+			//text.fixedToCamera=true;
+			//ends.play();
+			player.body.enable = false;
+			player.animations.stop();
+			game.time.events.add(Phaser.Timer.SECOND * 8, function() {
+			game.stage.backgroundColor = '#000000';	
+			//lives = 2
+			//score = 0;
+			game.state.start('Menu');
+				});
 		}
 
 		
@@ -232,6 +254,24 @@ function doorcollide(player, door){
 				door.body.enable = false;
 				nextlvl();
 		}
+				
+				function door1collide(player, door1){
+			if (player.body.touching.up){
+				door1.body.enable = false;
+				endgame();
+			}else if (player.body.touching.right){
+				door1.body.enable = false;
+				endgame();
+			}else if (player.body.touching.left){
+				
+				door1.body.enable = false;
+				endgame();
+			}else
+				door1.body.enable = false;
+				endgame();
+		}
+				
+				
 
 	
 			function coinOverlap(player, coin) {
